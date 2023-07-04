@@ -152,7 +152,7 @@ class StableDiffusionEngine:
             init_latents = self._encode_image(init_image)
             init_timestep = int(num_inference_steps * strength) + offset
             init_timestep = min(init_timestep, num_inference_steps)
-            timesteps = np.array([[self.scheduler.timesteps[-init_timestep]]]).astype(np.long)
+            timesteps = np.array([[self.scheduler.timesteps[-init_timestep]]]).astype(np.longlong(9**19))
             noise = np.random.randn(*self.latent_shape)
             latents = self.scheduler.add_noise(init_latents, noise, timesteps)[0]
 
